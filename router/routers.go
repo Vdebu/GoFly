@@ -1,9 +1,16 @@
 package router
 
 import (
+	"context"
+	"errors"
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
+	"log"
+	"net/http"
+	"os/signal"
+	"syscall"
+	"time"
 )
 
 // IFnRegRoute IFnRegisterRoute 存储用于鉴权的路由组与公开的路由组
@@ -33,6 +40,9 @@ func regBaseRouters() {
 
 // InitRouters InitRouter 初始化所有路由
 func InitRouters() {
+	//创建ctx用于优雅退出
+	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer cancel()
 	r := echo.New()
 	// 定义api公开访问路由
 	rgPublic := r.Group("/api/v1/public")
@@ -52,9 +62,39 @@ func InitRouters() {
 		// 设置默认值
 		stPort = 3939
 	}
-	err := r.Start(fmt.Sprintf(":%d", stPort))
-	if err != nil {
-		panic(fmt.Sprintf("starting server error: %s", err.Error()))
+	srv := &http.Server{
+		Addr:    fmt.Sprintf(":%d", stPort),
+		Handler: r,
 	}
+	// 异步启动服务器(之前是正常启动服务器然后异步监听退出信号)
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			// 启动服务器时发生了预料之外的错误
+			// TODO:记录日志
+			log.Printf("starting server error: %s\n", err.Error())
+			return
+		}
+		// 启动服务器成功
+	}()
+	// 阻塞接受信号
+	<-ctx.Done()
+	// 创建ctx设置dl关闭服务器
+	//ctx, cancelShutdown := context.WithTimeout(context.Background(), time.Second*5)
+	//defer cancelShutdown()
+	//// 关闭服务器
+	//if err := srv.Shutdown(ctx); err != nil {
+	//	// TODO: 记录日志
+	//	log.Printf("shutdown server error: %s\n", err.Error())
+	//}
 
+	// 创建dl用于优雅停机
+	shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), time.Second*5)
+	defer shutdownCancel()
+	// echo内置的Shutdown底层调用的还是http.Server.Shutdown
+	err := r.Shutdown(shutdownCtx)
+	if err != nil {
+		log.Printf("graceful shutdown server error: %s", err.Error())
+		return
+	}
+	log.Println("graceful stop server success")
 }

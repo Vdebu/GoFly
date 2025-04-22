@@ -27,26 +27,19 @@
         <entry key="file://$PROJECT_DIR$/router/routers.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745149108829" />
+              <option name="lastModified" value="1745320794936" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/router/user.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745149041872" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/test/generate_dir_test.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1745141648853" />
+              <option name="lastModified" value="1745244680553" />
             </ScannedPath>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastTimeChecked" value="1745139594424" />
+    <option name="lastTimeChecked" value="1745237172053" />
   </component>
 </project>
