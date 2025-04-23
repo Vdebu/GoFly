@@ -6,11 +6,14 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
+	echoSwagger "github.com/swaggo/echo-swagger"
 	"log"
 	"net/http"
 	"os/signal"
 	"syscall"
 	"time"
+
+	_ "vdebu.gofly.net/docs" // 隐式导入生成的doc
 )
 
 // IFnRegRoute IFnRegisterRoute 存储用于鉴权的路由组与公开的路由组
@@ -55,6 +58,8 @@ func InitRouters() {
 		// 将定义的默认参数传入作为API平台基础初始化其余路由
 		fnRegRoute(rgPublic, rgAuth)
 	}
+	// 注册swagger路由
+	r.GET("/swagger/*", echoSwagger.WrapHandler)
 	// 初始化服务器其他的相关信息
 	stPort := viper.GetInt("server.port")
 	// 如果viper没有读取到预期的整数数据则默认为0
@@ -68,6 +73,7 @@ func InitRouters() {
 	}
 	// 异步启动服务器(之前是正常启动服务器然后异步监听退出信号)
 	go func() {
+		fmt.Println("server listen on: ", srv.Addr)
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			// 启动服务器时发生了预料之外的错误
 			// TODO:记录日志
@@ -86,7 +92,7 @@ func InitRouters() {
 	//	// TODO: 记录日志
 	//	log.Printf("shutdown server error: %s\n", err.Error())
 	//}
-
+	//Server=localhost\MSSQLSERVER01;Database=master;Trusted_Connection=True;
 	// 创建dl用于优雅停机
 	shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer shutdownCancel()

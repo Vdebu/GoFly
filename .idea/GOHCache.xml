@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="UserAPI">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/api/UserAPI.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="scannedPathMapping">
       <map>
+        <entry key="file://$PROJECT_DIR$/api/UserAPI.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745407618782" />
+              <option name="schema">
+                <list>
+                  <option value="UserAPI" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/cmd/cmd.go">
           <value>
             <ScannedPath>
@@ -13,33 +36,45 @@
         <entry key="file://$PROJECT_DIR$/conf/conf.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745143481161" />
+              <option name="lastModified" value="1745328477979" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/docs/docs.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745330383563" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745148556275" />
+              <option name="lastModified" value="1745329679923" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/router/routers.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745320794936" />
+              <option name="lastModified" value="1745329901855" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/router/user.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745244680553" />
+              <option name="lastModified" value="1745407456523" />
             </ScannedPath>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastTimeChecked" value="1745237172053" />
+    <option name="tableStructMapping">
+      <map>
+        <entry key="user_api" value="UserAPI" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1745406402074" />
   </component>
 </project>
