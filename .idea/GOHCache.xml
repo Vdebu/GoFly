@@ -3,6 +3,13 @@
   <component name="GoORMHelperCache">
     <option name="schemaMapping">
       <map>
+        <entry key="User">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/model/user.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="UserAPI">
           <value>
             <set>
@@ -29,7 +36,7 @@
         <entry key="file://$PROJECT_DIR$/cmd/cmd.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745636522127" />
+              <option name="lastModified" value="1745665425755" />
             </ScannedPath>
           </value>
         </entry>
@@ -37,6 +44,13 @@
           <value>
             <ScannedPath>
               <option name="lastModified" value="1745328477979" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/conf/db.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745665749071" />
             </ScannedPath>
           </value>
         </entry>
@@ -57,7 +71,7 @@
         <entry key="file://$PROJECT_DIR$/global/global.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745636464994" />
+              <option name="lastModified" value="1745665248871" />
             </ScannedPath>
           </value>
         </entry>
@@ -65,6 +79,18 @@
           <value>
             <ScannedPath>
               <option name="lastModified" value="1745636360874" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/model/user.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745664664935" />
+              <option name="schema">
+                <list>
+                  <option value="User" />
+                </list>
+              </option>
             </ScannedPath>
           </value>
         </entry>
@@ -82,10 +108,18 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/utils/utils.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745665094800" />
+            </ScannedPath>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="tableStructMapping">
       <map>
+        <entry key="user" value="User" />
         <entry key="user_api" value="UserAPI" />
       </map>
     </option>
