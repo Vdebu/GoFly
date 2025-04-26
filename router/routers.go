@@ -7,11 +7,11 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
 	echoSwagger "github.com/swaggo/echo-swagger"
-	"log"
 	"net/http"
 	"os/signal"
 	"syscall"
 	"time"
+	"vdebu.gofly.net/global"
 
 	_ "vdebu.gofly.net/docs" // 隐式导入生成的doc
 )
@@ -73,11 +73,11 @@ func InitRouters() {
 	}
 	// 异步启动服务器(之前是正常启动服务器然后异步监听退出信号)
 	go func() {
-		fmt.Println("server listen on: ", srv.Addr)
+		global.Logger.Info("server listen on: ", srv.Addr)
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			// 启动服务器时发生了预料之外的错误
 			// TODO:记录日志
-			log.Printf("starting server error: %s\n", err.Error())
+			global.Logger.Errorf("starting server error: %s\n", err.Error())
 			return
 		}
 		// 启动服务器成功
@@ -99,8 +99,8 @@ func InitRouters() {
 	// echo内置的Shutdown底层调用的还是http.Server.Shutdown
 	err := r.Shutdown(shutdownCtx)
 	if err != nil {
-		log.Printf("graceful shutdown server error: %s", err.Error())
+		global.Logger.Errorf("graceful shutdown server error: %s", err.Error())
 		return
 	}
-	log.Println("graceful stop server success")
+	global.Logger.Info("graceful stop server success")
 }

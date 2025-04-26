@@ -1,3 +1,11 @@
+mode:
+  develop: true
 server:
   port: 3939
-redis:
+log:
+  # 1MB
+  MaxSize: 1
+  # 最大存在文件数
+  MaxBackups: 10
+  # 最长保留天数
+  MaxAge: 90
