@@ -31,6 +31,16 @@ func Start() {
 		initErr = utils.AppendError(initErr, err)
 	}
 	global.DB = db
+	// 初始化Redis
+	redis, err := conf.InitRedis()
+	if err != nil {
+		initErr = utils.AppendError(initErr, err)
+	}
+	global.RDB = redis
+	//global.RDB.Set("miku", "39")
+	//global.RDB.Delete("miku")
+	//fmt.Println(global.RDB.Get("miku"))
+	//fmt.Println(global.RDB.Get("miku"))
 	// 检查错误链中的错误
 	if initErr != nil {
 		// 先看日志组件是否初始化成功再决定是否用他来输出信息

@@ -3,6 +3,13 @@
   <component name="GoORMHelperCache">
     <option name="schemaMapping">
       <map>
+        <entry key="RedisClient">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/conf/redis.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="User">
           <value>
             <set>
@@ -36,7 +43,7 @@
         <entry key="file://$PROJECT_DIR$/cmd/cmd.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745665425755" />
+              <option name="lastModified" value="1745849479974" />
             </ScannedPath>
           </value>
         </entry>
@@ -50,7 +57,7 @@
         <entry key="file://$PROJECT_DIR$/conf/db.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745665749071" />
+              <option name="lastModified" value="1745669648191" />
             </ScannedPath>
           </value>
         </entry>
@@ -58,6 +65,18 @@
           <value>
             <ScannedPath>
               <option name="lastModified" value="1745639232240" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/conf/redis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1745849269165" />
+              <option name="schema">
+                <list>
+                  <option value="RedisClient" />
+                </list>
+              </option>
             </ScannedPath>
           </value>
         </entry>
@@ -71,7 +90,7 @@
         <entry key="file://$PROJECT_DIR$/global/global.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1745665248871" />
+              <option name="lastModified" value="1745752684100" />
             </ScannedPath>
           </value>
         </entry>
@@ -119,10 +138,11 @@
     </option>
     <option name="tableStructMapping">
       <map>
+        <entry key="redis_client" value="RedisClient" />
         <entry key="user" value="User" />
         <entry key="user_api" value="UserAPI" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1745579697412" />
+    <option name="lastTimeChecked" value="1745843330978" />
   </component>
 </project>
